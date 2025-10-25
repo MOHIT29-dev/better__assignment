@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-
+function Comments({ taskId }) {
+  const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState("");
+  const [editingId, setEditingId] = useState(null);
+  const [editingText, setEditingText] = useState("");
 
   const API_URL = "http://127.0.0.1:5000"; // Your Flask backend URL
 
