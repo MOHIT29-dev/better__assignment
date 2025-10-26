@@ -30,6 +30,8 @@ def home():
 # --- CRUD Routes ---
 @app.route('/comments/<int:task_id>', methods=['GET'])
 def get_comments(task_id):
+    comments = Comment.query.filter_by(task_id=task_id).all()
+    return jsonify([{'id': c.id, 'task_id': c.task_id, 'text': c.text} for c in comments])
 
 @app.route('/comments', methods=['POST'])
 def add_comment():
