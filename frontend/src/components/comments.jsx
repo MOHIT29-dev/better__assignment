@@ -47,7 +47,13 @@ function Comments({ taskId }) {
   };
 
   // Save edited comment
- 
+  const handleEditComment = async (id) => {
+    try {
+      const res = await fetch(`${API_URL}/comments/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: editingText }),
+      });
       if (!res.ok) throw new Error("Failed to update comment");
       setEditingId(null);
       setEditingText("");
