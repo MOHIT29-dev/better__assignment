@@ -34,7 +34,10 @@ def get_comments(task_id):
     return jsonify([{'id': c.id, 'task_id': c.task_id, 'text': c.text} for c in comments])
 
 @app.route('/comments', methods=['POST'])
-
+def add_comment():
+    data = request.get_json()
+    if not data or 'text' not in data:
+        return jsonify({"error": "No comment text provided"}), 400
     
     task_id = data.get('task_id', None)
     new_comment = Comment(text=data['text'], task_id=task_id)
