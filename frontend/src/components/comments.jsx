@@ -41,7 +41,7 @@ function Comments({ taskId }) {
   };
 
   // Start editing a comment
-  const startEditing = (id, text) => {
+  const startEditing =(id, text) => {
     setEditingId(id);
     setEditingText(text);
   };
