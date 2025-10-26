@@ -28,7 +28,8 @@ def home():
     return jsonify({"message": "Flask Comment API is running 🚀"})
 
 # --- CRUD Routes ---
-
+@app.route('/comments/<int:task_id>', methods=['GET'])
+def get_comments(task_id):
 
 @app.route('/comments', methods=['POST'])
 def add_comment():
